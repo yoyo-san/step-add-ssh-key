@@ -1,4 +1,4 @@
-# add-ssh-key
+# Step add-ssh-key
 
 Wercker allows you to generate SSH keys and expose them as via
 environment variables to your build or deployment pipeline.
