@@ -11,7 +11,7 @@ mkdir -p "$HOME/.ssh"
 
 if [ ! -f $HOME/.ssh/config ]; then
   echo "IdentityFile $identityFilePath" > $HOME/.ssh/config
-  chmod 0600 config
+  chmod 0600 $HOME/.ssh/config
 else
   sed -i -e "1i IdentityFile $identifyFilePath" $HOME/.ssh/config
 fi
