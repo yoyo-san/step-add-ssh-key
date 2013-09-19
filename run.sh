@@ -2,7 +2,8 @@
 
 identityFilePath=$(mktemp)
 
-privateKey=$(echo "$`$WERCKER_ADD_SSH_KEY_KEYNAME`_PRIVATE")
+command="echo \"\$$WERCKER_ADD_SSH_KEY_KEYNAME_PRIVATE\""
+privateKey=$($command)
 debug "Private key evaluated to: $privateKey"
 
 echo -e "$privateKey" > $identityFilePath
