@@ -1,7 +1,11 @@
 # Step name options prefix: WERCKER_ADD_SSH_KEY
 
 identityFilePath=$(mktemp)
-echo -e "$MYPACKAGE_KEY_PRIVATE" > $identityFilePath
+
+privateKey=$(echo "$`WERCKER_ADD_SSH_KEY_KEYNAME`_PRIVATE")
+debug "Private key evaluated to: $privateKey"
+
+echo -e "$privateKey" > $identityFilePath
 
 mkdir -p "$HOME/.ssh"
 
