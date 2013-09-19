@@ -1,6 +1,31 @@
-step-add-ssh-key
-================
+# add-ssh-key
 
-Adds a SSH key exposes by environment variables as an identity to SSH config
+Wercker allows you to generate SSH keys and expose them as via
+environment variables to your build or deployment pipeline.
+This step can be used to write these values to an EdentityFile
+and add them to the SSH configuration.
 
-[![wercker status](https://app.wercker.com/status/a7e4319e460b1d01c62b67fced02d021/m "wercker status")](https://app.wercker.com/project/bykey/a7e4319e460b1d01c62b67fced02d021)
+# Options
+
+* `KEYNAME`: The name of the key variable to export, this is without the `_PUBLIC` or `_PRIVATE` suffix.
+
+# Example
+
+``` yaml
+add-ssh-key:
+  keyname: MYPACKAGE_KEY
+```
+
+# What's new
+
+Initial version
+ 
+# History
+
+* 0.0.1 - Initial version
+
+# License
+
+The MIT License (MIT)
+
+Copyright (c) 2013 wercker
