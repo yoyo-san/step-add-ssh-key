@@ -8,12 +8,12 @@ debug "Private key evaluated to: $privateKey"
 echo -e "$privateKey" > $identityFilePath
 
 function addKey() {
-if [ ! -d "$1/.ssh" ]; then
+if [ ! sudo test -d "$1/.ssh" ]; then
   sudo mkdir -p "$1/.ssh"
   sudo chown $2 "$1/.ssh"
 fi
 
-  if [ ! -f $1/.ssh/config ]; then
+  if [ ! sudo test -f $1/.ssh/config ]; then
     sudo echo "IdentityFile $identityFilePath" > $1/.ssh/config
     sudo chown $2 $1/.ssh/config
     sudo chmod 0600 $1/.ssh/config
