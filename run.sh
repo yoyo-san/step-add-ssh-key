@@ -1,11 +1,11 @@
-## # Step name options prefix: WERCKER_ADD_SSH_KEY
-## 
-## identityFilePath=$(mktemp)
-## 
-## privateKey=$(eval echo "\$${WERCKER_ADD_SSH_KEY_KEYNAME}_PRIVATE")
-## debug "Private key evaluated to: $privateKey"
-## 
-## echo -e "$privateKey" > $identityFilePath
+# Step name options prefix: WERCKER_ADD_SSH_KEY
+
+identityFilePath=$(mktemp)
+
+privateKey=$(eval echo "\$${WERCKER_ADD_SSH_KEY_KEYNAME}_PRIVATE")
+debug "Private key evaluated to: $privateKey"
+
+echo -e "$privateKey" > $identityFilePath
 
 function addKey() {
   if ! sudo -u $2 test -d "$1/.ssh"; then
@@ -21,7 +21,7 @@ function addKey() {
     sudo chmod 0600 $1/.ssh/config
   else
     echo "config does exist"
-    sudo sed -i -e "1i IdentityFile $identifyFilePath" $1/.ssh/config
+    sudo -c `sed -i -e "1i IdentityFile $identifyFilePath" $1/.ssh/config`
   fi
 }
 
