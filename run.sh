@@ -21,6 +21,6 @@ function addKey() {
 }
 
 # Add for current user
-addKey($HOME, $USER)
+addKey $HOME $USER
 # Also add it for root
-addKey("/root", "root")
+addKey "/root" "root"
