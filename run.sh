@@ -10,6 +10,6 @@ privateKey=$(eval echo "\$${WERCKER_ADD_SSH_KEY_KEYNAME}_PRIVATE")
 echo -e "$privateKey" > $identityFilePath
 
 # Add for current user
-./addKey.sh $HOME $USER $identi
+$WERCKER_STEP_ROOT/addKey.sh $HOME $USER $identi
 # Also add it for root
-sudo ./addKey.sh /root root
+sudo $WERCKER_STEP_ROOT/addKey.sh /root root
