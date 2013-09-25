@@ -22,7 +22,9 @@ Also add the ssh-key for root.
  
 # History
 
-* 0.0.2 - add ssh-key for root
+* 0.0.3 - fix: broken identity file
+
+* 0.0.2 - add ssh-key for root *broken*
 
 * 0.0.1 - Initial version
 
