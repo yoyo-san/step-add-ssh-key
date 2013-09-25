@@ -7,11 +7,20 @@ debug "Private key evaluated to: $privateKey"
 
 echo -e "$privateKey" > $identityFilePath
 
-mkdir -p "$HOME/.ssh"
+function addKey() {
+  sudo mkdir -p "$1/.ssh"
+  sudo chown $2 "$1/.ssh"
 
-if [ ! -f $HOME/.ssh/config ]; then
-  echo "IdentityFile $identityFilePath" > $HOME/.ssh/config
-  chmod 0600 $HOME/.ssh/config
-else
-  sed -i -e "1i IdentityFile $identifyFilePath" $HOME/.ssh/config
-fi
+  if [ ! -f $1/.ssh/config ]; then
+    sudo echo "IdentityFile $identityFilePath" > $HOME/.ssh/config
+    sudo chown $2 $1/.ssh/config
+    sudo chmod 0600 $1/.ssh/config
+  else
+    sudo sed -i -e "1i IdentityFile $identifyFilePath" $HOME/.ssh/config
+  fi
+}
+
+# Add for current user
+addKey($HOME, $USER)
+# Also add it for root
+addKey("/root", "root")

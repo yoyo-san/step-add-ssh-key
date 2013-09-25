@@ -18,9 +18,11 @@ add-ssh-key:
 
 # What's new
 
-Initial version
+Also add the ssh-key for root.
  
 # History
+
+* 0.0.2 - add ssh-key for root
 
 * 0.0.1 - Initial version
 
