@@ -2,31 +2,39 @@
 
 Wercker allows you to generate SSH keys and expose them as via
 environment variables to your build or deployment pipeline.
-This step can be used to write these values to an EdentityFile
+This step can be used to write these values to an IdentityFile
 and add them to the SSH configuration.
 
 # Options
 
-* `KEYNAME`: The name of the key variable to export, this is without the `_PUBLIC` or `_PRIVATE` suffix.
+- `keyname` The name of the key variable to export, this is without the dollar sign prefix and without the `_PUBLIC` or `_PRIVATE` suffix.
 
 # Example
 
 ``` yaml
-add-ssh-key:
-  keyname: MYPACKAGE_KEY
+build:
+    steps:
+        - add-ssh-key:
+            keyname: MYPACKAGE_KEY
 ```
 
 # What's new
 
-Also add the ssh-key for root.
+Validate if a key is being written
  
-# History
+# Changelog
 
-* 0.0.3 - fix: broken identity file
+## 0.0.3
 
-* 0.0.2 - add ssh-key for root *broken*
+- Fix: broken identity file
 
-* 0.0.1 - Initial version
+## 0.0.2
+
+- Add ssh-key for root
+
+## 0.0.1
+
+- Initial version
 
 # License
 

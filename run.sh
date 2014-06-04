@@ -1,15 +1,27 @@
 #!/bin/bash
 
-# Step name options prefix: WERCKER_ADD_SSH_KEY
+validate_key() {
+  local private_key=$1;
 
-identityFilePath=$(mktemp)
+  if [ -n "$private_key" ]; then
+    fail "Private key not found. Do not prepend the keyname with a dollar sign and do not use _PRIVATE at the end.";
+  fi
+}
 
-privateKey=$(eval echo "\$${WERCKER_ADD_SSH_KEY_KEYNAME}_PRIVATE")
-#debug "Private key evaluated to: $privateKey"
+main() {
+  local ssh_key_path=$(mktemp);
 
-echo -e "$privateKey" > $identityFilePath
+  local private_key=$(eval echo "\$${WERCKER_ADD_SSH_KEY_KEYNAME}_PRIVATE");
 
-# Add for current user
-$WERCKER_STEP_ROOT/addKey.sh $HOME $USER $identityFilePath
-# Also add it for root
-sudo $WERCKER_STEP_ROOT/addKey.sh /root root $identityFilePath
+  validate_key "$private_key";
+
+  echo -e "$private_key" > $ssh_key_path
+
+  # Add for current user
+  $WERCKER_STEP_ROOT/addKey.sh $HOME $USER $ssh_key_path
+
+  # Also add it for root
+  sudo $WERCKER_STEP_ROOT/addKey.sh /root root $ssh_key_path
+}
+
+main;
