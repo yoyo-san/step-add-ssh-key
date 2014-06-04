@@ -24,6 +24,10 @@ Validate if a key is being written
  
 # Changelog
 
+## 1.0.0
+
+- Add validation of key
+
 ## 0.0.3
 
 - Fix: broken identity file
