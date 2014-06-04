@@ -3,7 +3,7 @@
 validate_key() {
   local private_key=$1;
 
-  if [ -n "$private_key" ]; then
+  if [ -z "$private_key" ]; then
     fail "Private key not found. Do not prepend the keyname with a dollar sign and do not use _PRIVATE at the end.";
   fi
 }
