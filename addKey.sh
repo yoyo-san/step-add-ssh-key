@@ -11,6 +11,7 @@ if [ ! -f $1/.ssh/config ]; then
   chmod 0600 $1/.ssh/config
   echo "$1/.ssh/config created"
 else
+  # insert the text at line 1
   sed -i -e "1i IdentityFile $3" $1/.ssh/config
   echo "$1/.ssh/config updated"
 fi
