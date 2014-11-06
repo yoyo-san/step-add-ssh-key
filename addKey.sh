@@ -5,7 +5,6 @@ if [ ! -d "$1/.ssh" ]; then
    chown $2 "$1/.ssh"
 fi
 
-host="${4:='*'}"
 if [ ! -f $1/.ssh/config ]; then
   if [ -z $4 ]; then
      echo -e "Host $host\n    IdentityFile $3" > $1/.ssh/config
