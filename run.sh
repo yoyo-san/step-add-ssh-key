@@ -13,15 +13,21 @@ main() {
 
   local private_key=$(eval echo "\$${WERCKER_ADD_SSH_KEY_KEYNAME}_PRIVATE");
 
+  local host="*"
+
+  if [ -z $WERCKER_ADD_SSH_KEY_HOST ]; then
+      host=$WERCKER_ADD_SSH_KEY_HOST
+  fi
+
   validate_key "$private_key";
 
   echo -e "$private_key" > $ssh_key_path
 
   # Add for current user
-  $WERCKER_STEP_ROOT/addKey.sh $HOME $USER $ssh_key_path $WERCKER_ADD_SSH_KEY_HOST
+  $WERCKER_STEP_ROOT/addKey.sh $HOME $USER $ssh_key_path $host
 
   # Also add it for root
-  sudo $WERCKER_STEP_ROOT/addKey.sh /root root $ssh_key_path $WERCKER_ADD_SSH_KEY_HOST
+  sudo $WERCKER_STEP_ROOT/addKey.sh /root root $ssh_key_path $host
 }
 
 main;
