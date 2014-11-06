@@ -13,7 +13,7 @@ main() {
   local ssh_key_path=$(mktemp);
 
   local private_key=$(eval echo "\$${WERCKER_ADD_SSH_KEY_KEYNAME}_PRIVATE");
-  local host="${WERCKER_ADD_SSH_KEY_HOST:=*}";
+  local host=$WERCKER_ADD_SSH_KEY_HOST;
 
   validate_key "$private_key";
 
