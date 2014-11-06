@@ -9,7 +9,7 @@ if [ ! -f $1/.ssh/config ]; then
   if [ -z $4 ]; then
      echo -e "Host *\n    IdentityFile $3" > $1/.ssh/config
   else
-     echo -e "Host $host\n    IdentityFile $3" > $1/.ssh/config
+     echo -e "Host $4\n    IdentityFile $3" > $1/.ssh/config
   fi
   chown $2 $1/.ssh/config
   chmod 0600 $1/.ssh/config
@@ -20,7 +20,7 @@ else
   if [ -z $4 ]; then
     sed -i -e "1i Host *" $1/.ssh/config
   else
-    sed -i -e "1i Host $host" $1/.ssh/config
+    sed -i -e "1i Host $4" $1/.ssh/config
   fi
   echo "$1/.ssh/config updated"
 fi
