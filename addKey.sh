@@ -12,6 +12,6 @@ if [ ! -f $1/.ssh/config ]; then
   echo "$1/.ssh/config created"
 else
   # insert the text at line 1
-  sed -i -e "1i Host $4\n\tIdentityFile $3" $1/.ssh/config
+  sed -i -e `echo "1i Host $4\n\tIdentityFile $3"` $1/.ssh/config
   echo "$1/.ssh/config updated"
 fi
