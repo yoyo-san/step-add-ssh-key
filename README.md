@@ -8,7 +8,7 @@ and add them to the SSH configuration.
 # Options
 
 - `keyname` The name of the key variable to export, this is without the dollar sign prefix and without the `_PUBLIC` or `_PRIVATE` suffix.
-- 'host' The value for setting keys only for certain hosts
+- `host` The value for setting keys only for certain hosts
 
 # Example
 
