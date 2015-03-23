@@ -8,4 +8,6 @@ description: |
 properties:
   host: string
   required: false
+  port: string
+  required: false
 
