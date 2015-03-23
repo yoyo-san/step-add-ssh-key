@@ -21,9 +21,11 @@ main() {
 
   # Add for current user
   $WERCKER_STEP_ROOT/addKey.sh $HOME $USER $ssh_key_path $WERCKER_ADD_SSH_KEY_PORT $WERCKER_ADD_SSH_KEY_HOST
+  cat /home/ubuntu/.ssh/config
 
   # Also add it for root
   sudo $WERCKER_STEP_ROOT/addKey.sh /root root $ssh_key_path $WERCKER_ADD_SSH_KEY_PORT $WERCKER_ADD_SSH_KEY_HOST
+  sudo cat /root/.ssh/config
 }
 
 main;
